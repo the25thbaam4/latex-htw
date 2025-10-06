@@ -1,0 +1,74 @@
+\makeatletter
+
+\newcommand*{\gradeType}[1]{\gdef\@gradeType{#1}}
+\newcommand*{\firstExaminer}[1]{\gdef\@firstExaminer{#1}}
+\newcommand*{\secondExaminer}[1]{\gdef\@secondExaminer{#1}}
+\newcommand*{\matrikelnr}[1]{\gdef\@matrikelnr{#1}}
+\newcommand*{\submitDate}[1]{\gdef\@submitDate{#1}}
+\newcommand*{\department}[1]{\gdef\@department{#1}}
+\newcommand*{\major}[1]{\gdef\@major{#1}}
+
+% HTW green
+\definecolor{htwgreen}{HTML}{76B900}
+
+\renewcommand*{\maketitle}{%
+	\begin{titlepage}
+		\newgeometry{left=2.5cm,right=2.5cm,top=3cm,bottom=3cm}
+		\centering
+		
+		% --- Logo ---
+		\includegraphics[width=0.35\textwidth]{resources/htw/logo}\par
+
+		
+		% --- Title with lines and color ---
+		\noindent\rule{\textwidth}{1pt}\par
+		\vspace{0.5cm}
+		{\color{htwgreen}\fontsize{18pt}{22pt}\selectfont\bfseries \@title \par}
+		\vspace{0.5cm}
+		\noindent\rule{\textwidth}{1pt}\par
+
+		
+		% --- Type of work ---
+		{\Large \@gradeType \par}
+		\vspace{1cm}
+		
+
+		
+\begin{center}
+	{\fontsize{12}{14}\selectfont Name des Studiengangs} \\[0.5em]
+	{\fontsize{18}{22}\selectfont \@major}
+\end{center}
+
+\begin{center}
+	{\color{htwgreen}\bfseries\fontsize{18}{22}\selectfont Fachbereich \@department}
+\end{center}
+		
+
+\begin{center}
+	{\fontsize{12}{14}\selectfont Vorgelegt von} \\[0.5em]
+	{\fontsize{18}{22}\selectfont \@author} \\[1em]
+%	{\fontsize{12}{14}\selectfont Immatrikulationsnummer: \@matrikelnr}
+\end{center}
+
+			\vspace{1cm}
+	
+	\begin{center}
+		{\fontsize{12}{14}\selectfont Datum} \\[0.5em]
+		{\fontsize{14}{17}\selectfont Berlin, \@submitDate}
+	\end{center}
+	
+	
+	\begin{center}
+		{\fontsize{18}{22}\selectfont
+			\begin{tabular}{@{}>{\raggedleft\arraybackslash}p{5cm} l@{}}
+				Erstgutachter\_in: & \@firstExaminer \\
+				Zweitgutachter\_in: & \@secondExaminer
+			\end{tabular}
+		}
+	\end{center}
+		
+		\restoregeometry
+	\end{titlepage}
+}
+
+\makeatother
